@@ -146,7 +146,7 @@ class DatapeminjamanController extends Controller
         return redirect()->route('datapeminjaman.kepalalab');
     }
 
-    public function profile($id)
+    public function profilekepalalab($id)
     {
         // Retrieve the user with the given ID
         $user = User::findOrFail($id);

@@ -150,13 +150,31 @@ class KategoriController extends Controller
             return redirect()->route('kategori.kepalalab')->with('success', 'Data Kategori berhasil diupdate');
     }
 
-    public function profile($id)
+    public function profilestaff($id)
     {
         // Retrieve the user with the given ID
         $user = User::findOrFail($id);
 
         // Pass the user data to the view
         return view('staff.profile.index', ['user' => $user]);
+    }
+
+    public function profileteknisi($id)
+    {
+        // Retrieve the user with the given ID
+        $user = User::findOrFail($id);
+
+        // Pass the user data to the view
+        return view('teknisi.profile.index', ['user' => $user]);
+    }
+
+    public function profilekepalalab($id)
+    {
+        // Retrieve the user with the given ID
+        $user = User::findOrFail($id);
+
+        // Pass the user data to the view
+        return view('kepalalab.profile.index', ['user' => $user]);
     }
 
 }

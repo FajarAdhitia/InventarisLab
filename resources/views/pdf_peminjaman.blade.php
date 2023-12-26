@@ -232,7 +232,11 @@
                                     [Nama Ketua]
                                 @endif
                             </h3>
-                            <h3>NIP. [NIP Ketua]</h3>
+                            <h3>NIP. @if ($kepalalab)
+                                {{ $kepalalab->nip }}
+                            @else
+                                [Nama Ketua]
+                            @endif</h3>
                         </td>
                     </tr>
                 </table>

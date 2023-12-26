@@ -522,7 +522,7 @@
                         <div class="form-group">
                             <label class="modal-label">Nama Ruangan</label>
                             <input name="namalokasi" id="namalokasi" type="text" autocomplete="off"
-                                class="form-control" placeholder="Nama Kategori" required>
+                                class="form-control" placeholder="Nama Ruangan" required>
                         </div>
                         <div class="form-group">
                             <label class="modal-label" for="created_at">Tanggal Dibuat</label>

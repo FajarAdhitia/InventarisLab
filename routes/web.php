@@ -36,7 +36,7 @@ Route::middleware(['auth', 'staff'])
         Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.staff');
         Route::delete('/kategori/{kategori}/hapus', [KategoriController::class, 'hapus'])->name('kategori.hapus');
         Route::put('/kategori/update/{idkategori}', [KategoriController::class, 'update'])->name('kategori.update');
-        Route::get('/staff/profile/{id}', [Kategoricontroller::class, 'profile'])->name('staff.profile.index');
+        Route::get('/staff/profile/{id}', [Kategoricontroller::class, 'profilestaff'])->name('staff.profile.index');
         // barang
         Route::get('/barang/role', [barangController::class, 'role'])->name('barang.role');
         Route::get('/barang', [barangController::class, 'index'])->name('barang.staff');
@@ -96,7 +96,7 @@ Route::middleware(['auth', 'kepalalab'])
         Route::get('/peminjaman/approve/{idpeminjam}', [datapeminjamanController::class, 'approve'])->name('peminjaman.approve');
         Route::get('/datapeminjaman/reject/{idpeminjam}', [dataPeminjamanController::class, 'reject'])->name('peminjaman.reject');
         Route::get('/kepalalab/datapeminjaman/detail/{idpeminjam}/{idpeminjaman}', [DatapeminjamanController::class, 'detailPeminjaman'])->name('kepalalab.datapeminjaman.detail');
-        Route::get('/kepalalab/profile/{id}', [dataPeminjamancontroller::class, 'profile'])->name('kepalalab.profile.index');
+        Route::get('/kepalalab/profile/{id}', [dataPeminjamancontroller::class, 'profilekepalalab'])->name('kepalalab.profile.index');
 
         Route::get('/barangkepalalab', [barangController::class, 'indexkepalalab'])->name('barang.kepalalab');
         Route::get('/kepalalab/barang/cetak', [barangController::class, 'indexcetakkepalalab'])->name('barangcetak.kepalalab');
@@ -163,6 +163,7 @@ Route::middleware(['auth', 'teknisi'])
     Route::put('/laporaninventaris/{idlaporaninventaris}', [LaporaninventarisController::class, 'update'])->name('laporaninventaris.update');
     Route::delete('/laporaninventaris/{id}', [LaporaninventarisController::class, 'hapus'])->name('laporaninventaris.hapus');
     Route::get('/laporaninventaris/edit/{idlaporaninventaris}', [LaporaninventarisController::class, 'edit'])->name('edit.laporaninventaris');
+    Route::get('/teknisi/profile/{id}', [Kategoricontroller::class, 'profileteknisi'])->name('teknisi.profile.index');
 
 
 

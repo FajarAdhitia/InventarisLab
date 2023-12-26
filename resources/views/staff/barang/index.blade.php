@@ -682,8 +682,6 @@
 
             if (checkedCount === 0) {
                 Swal.fire('Pilih barang', 'Pilih barang yang akan dicetak barcode', 'warning');
-            } else if (checkedCount < 3) {
-                Swal.fire('Pilih minimal 3 data', 'Pilih minimal 3 data barang yang akan dicetak barcode', 'warning');
             } else {
                 // Buat URL dengan parameter GET untuk dikirimkan sebagai query string
                 var urlWithParams = url + '?selectedItems=' + selectedItems.join(',');

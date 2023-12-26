@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,16 +15,13 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets//dist/css/adminlte.min.css') }}">
     <link rel="icon" href="{{ asset('assets/dist/img/logounib.png') }}" type="image/png">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 </head>
 <style>
     .sidebar .nav-item {
     margin-bottom: 5px;
-}
-
+    }
 </style>
 <body class="hold-transition sidebar-mini">
-
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
@@ -164,7 +162,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Dashboard</h1>
+                            <h1>DATA PROFIL {{ auth()->user()->name }}</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -181,7 +179,7 @@
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Dashboard Teknisi</h3>
+                        <h3 class="card-title"></h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"
@@ -194,67 +192,62 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-header border-0">
-                                        <div class="d-flex justify-content-between">
-                                            <h3 class="card-title">Total Laporan</h3>
+                        <div class="container-xl px-4 mt-4">
+                            <!-- Account page navigation-->
+                            <hr class="mt-0 mb-4">
+                            <div class="row">
+                                <div class="col-xl-4">
+                                    <!-- Profile picture card-->
+                                    <div class="card mb-4 mb-xl-0">
+                                        <div class="card-header"></div>
+                                        <div class="card-body text-center">
+                                            <!-- Profile picture image-->
+                                            <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                                            <!-- Profile picture help block-->
                                         </div>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="position-relative mb-4">
-                                            <canvas id="laporan-chart" height="200"></canvas>
+                                </div>
+                                <div class="col-xl-8">
+                                    <!-- Account details card-->
+                                    <div class="card mb-4">
+                                        <div class="card-header">Akun Detail</div>
+                                        <div class="card-body">
+                                            <form>
+                                                <!-- Form Group (username)-->
+                                                <div class="mb-3">
+                                                    <label class="small mb-1" for="inputUsername">Username</label>
+                                                    <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="{{ $user->name }}" readonly>
+                                                </div>
+                                                <!-- Form Row-->
+                                                <!-- Form Group (email address)-->
+                                                <div class="mb-3">
+                                                    <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                                    <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="{{ $user->email }}" readonly>
+                                                </div>
+                                                <!-- Form Row-->
+                                                <div class="row gx-3 mb-3">
+                                                    <!-- Form Group (phone number)-->
+                                                    <div class="col-md-6">
+                                                        <label class="small mb-1" for="inputPhone">Role Akun</label>
+                                                        <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="{{ $user->role }}" readonly>
+                                                    </div>
+                                                    <!-- Form Group (birthday)-->
+                                                    <div class="col-md-6">
+                                                        <label class="small mb-1" for="inputBirthday">Tanggal Terdaftar</label>
+                                                        <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="{{ $user->created_at }}" readonly>
+                                                    </div>
+                                                </div>
+                                                <!-- Save changes button-->
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <!-- /.card-body -->
-                    <script>
-                        document.addEventListener("DOMContentLoaded", function () {
-                            // Use the data passed from the controller
-                            drawBarChart('laporan-chart', 'Total Laporan', {{ $laporandata ?? 0 }});
-                        });
-
-                        function drawBarChart(canvasId, label, data) {
-                            var ctx = document.getElementById(canvasId).getContext("2d");
-                            var barChart = new Chart(ctx, {
-                                type: 'bar',
-                                data: {
-                                    labels: [label],
-                                    datasets: [{
-                                        label: label,
-                                        backgroundColor: 'blue', // Adjust color as needed
-                                        data: [data],
-                                    }]
-                                },
-                                options: {
-                                    responsive: true,
-                                    maintainAspectRatio: false,
-                                    scales: {
-                                        xAxes: [{
-                                            type: 'category',
-                                            scaleLabel: {
-                                                display: true,
-                                                labelString: 'Data'
-                                            }
-                                        }],
-                                        yAxes: [{
-                                            scaleLabel: {
-                                                display: true,
-                                                labelString: 'Count'
-                                            }
-                                        }]
-                                    }
-                                }
-                            });
-                        }
-                    </script>
-
-
+                    <div class="card-footer">
+                    </div>
                     <!-- /.card-footer-->
                 </div>
                 <!-- /.card -->

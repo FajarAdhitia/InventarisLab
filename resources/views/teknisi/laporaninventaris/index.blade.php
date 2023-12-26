@@ -174,7 +174,7 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="{{ route('staff.profile.index', ['id' => auth()->user()->id]) }}"
+                        <a href="{{ route('teknisi.profile.index', ['id' => auth()->user()->id]) }}"
                             class="d-block">{{ auth()->user()->name }}</a>
                     </div>
                 </div>

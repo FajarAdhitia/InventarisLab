@@ -21,6 +21,7 @@ class UserController extends Controller
         // Validasi input di sini jika diperlukan
         $request->validate([
             'name' => 'required|string|max:255',
+            'nip' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
             'role' => 'required|in:staff,kepalalab,teknisi',
             'password' => 'required|min:8|confirmed',
@@ -32,6 +33,7 @@ class UserController extends Controller
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
+                'nip' => $request->nip,
                 'role' => $request->role,
                 'password' => Hash::make($request->password),
                 'created_at' => $request->created_at,
@@ -61,6 +63,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
+            'nip' => 'required|string|max:255',
             'role' => 'required|in:staff,kepalalab,teknisi',
             // Tambahkan validasi dan field lainnya sesuai kebutuhan
         ]);
@@ -69,6 +72,7 @@ class UserController extends Controller
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
+            'nip' => $request->nip,
             'role' => $request->role,
             // Tambahkan field lainnya sesuai kebutuhan
         ]);
@@ -82,40 +86,6 @@ class UserController extends Controller
         return redirect()->route('user.index')->with('success', 'User berhasil dihapus!');
     }
 
-    public function ubahpassword(Request $request, User $user)
-    {
-        // Validasi input di sini jika diperlukan
-        $request->validate([
-            'password' => 'required|string|min:8|confirmed',
-        ]);
 
-        // Ubah password pengguna
-        $user->update([
-            'password' => Hash::make($request->password),
-        ]);
-
-        // Logout pengguna jika mereka mengubah password mereka sendiri
-        if ($user->id === Auth::id()) {
-            Auth::logout();
-            return redirect()->route('login')->with('success', 'Password changed successfully. Please log in again.');
-        }
-
-        return redirect()->route('user.index')->with('success', 'Password berhasil diubah!');
-    }
-    public function resetPassword(Request $request, User $user)
-    {
-        dd($request->all());
-        // Validasi input di sini jika diperlukan
-        $request->validate([
-            'new_password' => 'required|min:8|confirmed',
-        ]);
-
-        // Ubah password pengguna
-        $user->update([
-            'password' => Hash::make($request->new_password),
-        ]);
-
-        return redirect()->back()->with('success', 'Password berhasil direset!');
-    }
 
 }

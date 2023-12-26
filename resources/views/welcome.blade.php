@@ -98,7 +98,7 @@
 <body>
     <div class="welcome-box">
         <div class="welcome-header">
-            <h1 class="display-5 font-weight-bold">Selamat Datang di Sistem Informasi Pencatatan Dan Peminjaman Baranag
+            <h1 class="display-5 font-weight-bold">Selamat Datang di Sistem Informasi Monitoring Dan Peminjaman Barang
                 Labrotorium Informatika
             </h1>
         </div>

@@ -176,7 +176,8 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="{{ route('kepalalab.profile.index', ['id' => auth()->user()->id]) }}" class="d-block">{{ auth()->user()->name }}</a>
+                        <a href="{{ route('kepalalab.profile.index', ['id' => auth()->user()->id]) }}"
+                            class="d-block">{{ auth()->user()->name }}</a>
                     </div>
                 </div>
 
@@ -245,8 +246,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('tersedia.kepalalab') }}"
-                                        class="nav-link">
+                                    <a href="{{ route('tersedia.kepalalab') }}" class="nav-link">
                                         <i class="fas fa-list-ul"></i>
                                         <p>Barang Tersedia</p>
                                     </a>
@@ -262,16 +262,14 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('riwayatpeminjam.kepalalab') }}"
-                                class="nav-link">
+                            <a href="{{ route('riwayatpeminjam.kepalalab') }}" class="nav-link">
                                 <i class="fas fa-indent"></i>
                                 <p>Riwayat Peminjaman</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('laporaninventaris.kepalalab') }}"
-                                class="nav-link">
+                            <a href="{{ route('laporaninventaris.kepalalab') }}" class="nav-link">
                                 <i class="fas fa-cogs"></i>
                                 <p>
                                     Pemeliharaan Inventaris
@@ -290,8 +288,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('lokasi.kepalalab') }}"
-                                class="nav-link">
+                            <a href="{{ route('lokasi.kepalalab') }}" class="nav-link">
                                 <i class="fas fa-door-closed"></i>
                                 <p>
                                     Lokasi
@@ -410,7 +407,8 @@
                                                             <i class="fas fa-edit"></i>
                                                         </button>
 
-                                                        <button class="btn btn-danger" data-toggle="modal" data-target="#modaldelete_{{ $items->id }}">
+                                                        <button class="btn btn-danger" data-toggle="modal"
+                                                            data-target="#modaldelete_{{ $items->id }}">
                                                             <i class="fas fa-trash-alt"></i>
                                                         </button>
 
@@ -449,217 +447,230 @@
     </div>
 
     <!-- modal-->
-@foreach ($users as $items)
-    <div id="modaledit_{{ $items->id }}" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit User</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <!-- Form untuk pengeditan user -->
-                    <form method="post" action="{{ route('user.update', ['user' => $items->id]) }}">
-                        @csrf
-                        @method('PUT')
+    @foreach ($users as $items)
+        <div id="modaledit_{{ $items->id }}" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit User</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Form untuk pengeditan user -->
+                        <form method="post" action="{{ route('user.update', ['user' => $items->id]) }}">
+                            @csrf
+                            @method('PUT')
 
-                        <!-- Tambahkan input dan field yang sesuai dengan kebutuhan -->
-                        <div class="form-group">
-                            <label for="name">Nama Pengguna</label>
-                            <input type="text" id="name" name="name" class="form-control" value="{{ $items->name }}" required>
-                        </div>
+                            <!-- Tambahkan input dan field yang sesuai dengan kebutuhan -->
+                            <div class="form-group">
+                                <label for="name">Nama Pengguna</label>
+                                <input type="text" id="name" name="name" class="form-control"
+                                    value="{{ $items->name }}" required>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" value="{{ $items->email }}" required>
-                        </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" class="form-control"
+                                    value="{{ $items->email }}" required>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="nip">NIP</label>
-                            <input type="text" id="nip" name="nip" class="form-control" value="{{ $items->nip }}" required>
-                        </div>
+                            <div class="form-group">
+                                <label for="nip">NIP</label>
+                                <input type="text" id="nip" name="nip" class="form-control"
+                                    value="{{ $items->nip }}">
+                            </div>
 
-                        <div class="form-group">
-                            <label for="role">Role</label>
-                            <select id="role" name="role" class="form-control" required>
-                                <option value="staff" {{ $items->role == 'staff' ? 'selected' : '' }}>Staff</option>
-                                <option value="kepalalab" {{ $items->role == 'kepalalab' ? 'selected' : '' }}>Kepala Laboratorium</option>
-                                <option value="teknisi" {{ $items->role == 'teknisi' ? 'selected' : '' }}>Teknisi</option>
-                            </select>
-                        </div>
+                            <div class="form-group">
+                                <label for="role">Role</label>
+                                <select id="role" name="role" class="form-control" required>
+                                    <option value="staff" {{ $items->role == 'staff' ? 'selected' : '' }}>Staff
+                                    </option>
+                                    <option value="kepalalab" {{ $items->role == 'kepalalab' ? 'selected' : '' }}>
+                                        Kepala Laboratorium</option>
+                                    <option value="teknisi" {{ $items->role == 'teknisi' ? 'selected' : '' }}>Teknisi
+                                    </option>
+                                </select>
+                            </div>
 
-                        <!-- Tambahkan field lainnya sesuai kebutuhan -->
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="modaldelete_{{ $items->id }}" tabindex="-1" role="dialog" aria-labelledby="modaldelete_{{ $items->id }}Label" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modaldelete_{{ $items->id }}Label">Konfirmasi Penghapusan</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Anda yakin ingin menghapus data ini?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <form action="{{ route('user.hapus', ['user' => $items->id]) }}" method="POST" class="inline-block">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Hapus</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-@endforeach
-
-            <!-- Modal Delete -->
-
-
-
-            <div id="myModal" class="modal fade">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Tambah Data User</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="post" id="myForm" action="{{ route('user.post') }}" novalidate>
-                                @csrf
-                                <div class="form-group">
-                                    <label class="modal-label" for="name">Nama Pengguna</label>
-                                    <input name="name" id="name" type="text" autocomplete="off" class="form-control" placeholder="Nama Pengguna" required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="modal-label" for="email">Email</label>
-                                    <input name="email" id="email" type="email" autocomplete="off" class="form-control" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="modal-label" for="nip">NIP</label>
-                                    <input name="nip" id="nip" type="nip" autocomplete="off" class="form-control" placeholder="NIP" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="modal-label" for="role">Role</label>
-                                    <select name="role" id="role" class="form-control" required>
-                                        <option value="staff">Staff</option>
-                                        <option value="kepalalab">Kepala Laboratorium</option>
-                                        <option value="teknisi">Teknisi</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="modal-label" for="password">Password</label>
-                                    <input name="password" id="password" type="password" autocomplete="off" class="form-control" placeholder="Password" required minlength="8" pattern=".{8,}" title="Password harus memiliki minimal 8 karakter">
-                                    <small class="form-text text-muted">Password harus memiliki minimal 8 karakter.</small>
-                                </div>
-                                <div class="form-group">
-                                    <label class="modal-label" for="password_confirmation">Konfirmasi Password</label>
-                                    <input name="password_confirmation" id="password_confirmation" type="password" autocomplete="off" class="form-control" placeholder="Konfirmasi Password" required minlength="8" pattern=".{8,}" title="Password harus memiliki minimal 8 karakter">
-                                </div>
-                                <div class="form-group">
-                                    <label class="modal-label" for="created_at">Tanggal Daftar</label>
-                                    <input type="datetime-local" class="form-control" id="created_at" name="created_at" required>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
-                                </div>
-                            </form>
-                        </div>
+                            <!-- Tambahkan field lainnya sesuai kebutuhan -->
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="modal fade" id="modaldelete_{{ $items->id }}" tabindex="-1" role="dialog"
+            aria-labelledby="modaldelete_{{ $items->id }}Label" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modaldelete_{{ $items->id }}Label">Konfirmasi Penghapusan</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Anda yakin ingin menghapus data ini?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <form action="{{ route('user.hapus', ['user' => $items->id]) }}" method="POST"
+                            class="inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Hapus</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 
-            <script>
-                document.getElementById('myForm').addEventListener('submit', function(event) {
-                    var name = document.getElementById('name').value;
-                    var email = document.getElementById('email').value;
-                    var email = document.getElementById('nip').value;
-                    var password = document.getElementById('password').value;
-                    var passwordConfirmation = document.getElementById('password_confirmation').value;
-                    var role = document.getElementById('role').value;
-                    var created_at = document.getElementById('created_at').value;
+    <!-- Modal Delete -->
 
-                    if (!name || !email || !nip || !password || !passwordConfirmation || !role || !created_at) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Semua Data Harus Diisi!',
-                        });
 
-                        event.preventDefault(); // Prevent form submission
-                    }
+
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tambah Data User</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="myForm" action="{{ route('user.post') }}" novalidate>
+                        @csrf
+                        <div class="form-group">
+                            <label class="modal-label" for="name">Nama Pengguna</label>
+                            <input name="name" id="name" type="text" autocomplete="off"
+                                class="form-control" placeholder="Nama Pengguna" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="modal-label" for="email">Email</label>
+                            <input name="email" id="email" type="email" autocomplete="off"
+                                class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="modal-label" for="nip">NIP</label>
+                            <input name="nip" id="nip" type="nip" autocomplete="off"
+                                class="form-control" placeholder="NIP" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="modal-label" for="role">Role</label>
+                            <select name="role" id="role" class="form-control" required>
+                                <option value="staff">Staff</option>
+                                <option value="kepalalab">Kepala Laboratorium</option>
+                                <option value="teknisi">Teknisi</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="modal-label" for="password">Password</label>
+                            <input name="password" id="password" type="password" autocomplete="off"
+                                class="form-control" placeholder="Password" required minlength="8" pattern=".{8,}"
+                                title="Password harus memiliki minimal 8 karakter">
+                            <small class="form-text text-muted">Password harus memiliki minimal 8 karakter.</small>
+                        </div>
+                        <div class="form-group">
+                            <label class="modal-label" for="password_confirmation">Konfirmasi Password</label>
+                            <input name="password_confirmation" id="password_confirmation" type="password"
+                                autocomplete="off" class="form-control" placeholder="Konfirmasi Password" required
+                                minlength="8" pattern=".{8,}" title="Password harus memiliki minimal 8 karakter">
+                        </div>
+                        <div class="form-group">
+                            <label class="modal-label" for="created_at">Tanggal Daftar</label>
+                            <input type="datetime-local" class="form-control" id="created_at" name="created_at"
+                                required>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var passwordConfirmation = document.getElementById('password_confirmation').value;
+            var role = document.getElementById('role').value;
+            var created_at = document.getElementById('created_at').value;
+
+            if (!name || !email || !password || !passwordConfirmation || !role || !created_at) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Semua Data Harus Diisi!',
                 });
-            </script>
+
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    </script>
 
 
-<script>
-    document.getElementById('myForm').addEventListener('submit', function(event) {
-        var name = document.getElementById('name').value;
-        var email = document.getElementById('email').value;
-        var nip = document.getElementById('nip').value;
-        var password = document.getElementById('password').value;
-        var passwordConfirmation = document.getElementById('password_confirmation').value;
-        var role = document.getElementById('role').value;
-        var created_at = document.getElementById('created_at').value;
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var passwordConfirmation = document.getElementById('password_confirmation').value;
+            var role = document.getElementById('role').value;
+            var created_at = document.getElementById('created_at').value;
 
-        if (!name || !email || !nip || !password || !passwordConfirmation || !role || !created_at) {
+            if (!name || !email || !password || !passwordConfirmation || !role || !created_at) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Semua Data Harus Diisi!',
+                });
+
+                event.preventDefault(); // Prevent form submission
+            }
+
+            // Check if email has a valid format
+            var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Format Email Tidak Valid!',
+                });
+
+                event.preventDefault(); // Cegah pengiriman formulir
+                return;
+            }
+
+            // Check if password and confirmation match
+            if (password !== passwordConfirmation) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Password dan Konfirmasi Password tidak sesuai!',
+                });
+
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+
+        if (password !== passwordConfirmation || password.length < 8) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Semua Data Harus Diisi!',
+                text: 'Password harus memiliki minimal 8 karakter dan sesuai dengan Konfirmasi Password!',
             });
-
             event.preventDefault(); // Prevent form submission
+            return;
         }
-
-        // Check if email has a valid format
-        var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        if (!emailRegex.test(email)) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Format Email Tidak Valid!',
-            });
-
-            event.preventDefault(); // Prevent form submission
-        }
-
-        // Check if password and confirmation match
-        if (password !== passwordConfirmation) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Password dan Konfirmasi Password tidak sesuai!',
-            });
-
-            event.preventDefault(); // Prevent form submission
-        }
-    });
-</script>
-
-
-
-
-
-
-
+    </script>
 
 
     <script>
@@ -730,11 +741,11 @@
 
 
     <!-- Bootstrap 4 -->
+    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
     <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
 </body>
 
 </html>

@@ -457,7 +457,7 @@
                                 </table>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <a href="{{ route('barangcetak.staff') }}" class="btn btn-primary">
+                                        <a href="{{ route('barangcetak.kepalalab') }}" class="btn btn-primary">
                                             <i class="fas fa-print"></i> CETAK DATA
                                         </a>
                                         <button onclick="cetakBarcode('{{ route('cetakbarcode.kepalalab') }}')"
@@ -853,7 +853,6 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
 </body>
 
 </html>

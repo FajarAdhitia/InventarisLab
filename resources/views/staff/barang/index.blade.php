@@ -352,6 +352,7 @@
                                 <button style="margin-bottom: 20px; width: 150px; height: 40px; border-radius: 20px;"
                                     data-toggle="modal" data-target="#myModal" class="btn btn-info"><span
                                         class="glyphicon glyphicon-plus"></span>Tambah Barang</button>
+
                                 <table id="datatabel" class="table table-striped table-bordered" style="width:100%">
                                     <thead style="background-color: rgba(27, 145, 255, 0.726); color: rgb(0, 0, 0);">
                                         <tr>
@@ -367,6 +368,7 @@
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
                                         <?php $no = 1; ?>
                                         @foreach ($data_barang_kategori as $items)
@@ -819,7 +821,6 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
 </body>
 
 </html>

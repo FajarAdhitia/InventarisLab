@@ -21,7 +21,7 @@ class UserController extends Controller
         // Validasi input di sini jika diperlukan
         $request->validate([
             'name' => 'required|string|max:255',
-            'nip' => 'required|string|max:255',
+            'nip' => 'nullable|string|max:255',
             'email' => 'required|email|unique:users',
             'role' => 'required|in:staff,kepalalab,teknisi',
             'password' => 'required|min:8|confirmed',
@@ -63,7 +63,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'nip' => 'required|string|max:255',
+            'nip' => 'nullable|string|max:255',
             'role' => 'required|in:staff,kepalalab,teknisi',
             // Tambahkan validasi dan field lainnya sesuai kebutuhan
         ]);

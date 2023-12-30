@@ -112,7 +112,7 @@
                 <th style="width: 25%; border: 1px solid black;">Nama</th>
                 <th style="width: 26%; border: 1px solid black;">Instansi</th>
                 <th style="width: 22.5%; border: 1px solid black;">Kontak</th>
-                <th style="border: 1px solid black;">Tanggal PEnegmbalian</th>
+                <th style="border: 1px solid black;">Tanggal Pengembalian</th>
             </tr>
         </thead>
         <tbody>

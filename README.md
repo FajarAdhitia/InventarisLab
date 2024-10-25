@@ -22,4 +22,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
 ## Installation
-- git clone 
+- git clone https://github.com/FajarAdhitia/InventarisLab.git
+- php artisan migrate --seed
+- php artisan serve
+- login using account from seeder database
